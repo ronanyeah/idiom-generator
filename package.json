@@ -8,7 +8,7 @@
     "type": "git"
   },
   "scripts": {
-    "deploy": "zip -FSr ./lambda.zip ./node_modules/ ./index.js ./idiom.js twitter.js ./keys.json ./nouns.json ./qualifiers.json ./conditions.json && aws --debug lambda update-function-code --function-name idiom-tweeter --zip-file fileb://./idiom.zip && rm ./lambda.zip"
+    "deploy": "zip -FSr ./lambda.zip ./node_modules/ ./index.js ./idiom.js twitter.js ./keys.json ./nouns.json ./qualifiers.json ./conditions.json && aws --debug lambda update-function-code --function-name idiom-tweeter --zip-file fileb://./lambda.zip && rm ./lambda.zip"
   },
   "author": "ronanyeah <ronan_mccabe@hotmail.com>",
   "license": "MIT",
