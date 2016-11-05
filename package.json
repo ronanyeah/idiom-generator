@@ -8,6 +8,7 @@
     "type": "git"
   },
   "scripts": {
+    "flow:watch": "nodemon -x 'flow || true'",
     "deploy": "zip -FSr ./lambda.zip ./node_modules/ ./index.js ./idiom.js twitter.js ./keys.json ./nouns.json ./qualifiers.json ./conditions.json && aws --debug lambda update-function-code --function-name idiom-tweeter --zip-file fileb://./lambda.zip && rm ./lambda.zip"
   },
   "author": "ronanyeah <ronan_mccabe@hotmail.com>",

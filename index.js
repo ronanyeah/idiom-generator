@@ -1,7 +1,11 @@
 'use strict'
 
-const idiom   = require('./idiom.js')
-const twitter = require('./twitter.js')
+const { consumerKey, consumerSecret, token, tokenSecret } =
+  require('./keys.json')
+const idiom =
+  require('./idiom.js')
+const twitter =
+  require('./twitter.js')( consumerKey, consumerSecret, token, tokenSecret )
 
 exports.handler =
   (event, context) =>
