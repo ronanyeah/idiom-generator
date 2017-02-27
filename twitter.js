@@ -6,32 +6,14 @@ const fetch  = require('node-fetch')
 const crypto = require('crypto')
 const R      = require('ramda')
 
-// Custom encoding function to comply with RFC3986:
-// https://dev.twitter.com/oauth/overview/percent-encoding-parameters
-const encode = str =>
-  encodeURIComponent(str)
-  .replace(
-    /[!'()*]/g,
-    c =>
-      '%' + c.charCodeAt(0).toString(16)
-  )
+const {create, env} = require('sanctuary')
 
-// Encodes keys and values and joins them together.
-const objToParamString =
-  R.pipe(
-    R.toPairs,
-    R.map(
-      R.pipe(
-        R.map(encode),
-        R.join('=')
-      )
-    ),
-    R.join('&')
-  )
+const S = create({
+  checkTypes: process.env.NODE_ENV !== 'production',
+  env: env
+})
 
-// HMAC-SHA1 hashing.
-const hmacHash = (signingKey, string) =>
-  crypto.createHmac('sha1', signingKey).update(string).digest()
+const { encode, objToParamString, hmacHash } = require('./helpers.js')
 
 module.exports = function (consumerKey /* :string */, consumerSecret /* :string */, token /* :string */, tokenSecret /* :string */) {
 
