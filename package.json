@@ -8,15 +8,15 @@
     "type": "git"
   },
   "scripts": {
-    "flow:watch": "nodemon -x 'flow || true'",
-    "deploy": "zip -FSr ./lambda.zip ./node_modules/ ./index.js ./idiom.js twitter.js ./keys.json ./nouns.json ./qualifiers.json ./conditions.json && aws --debug lambda update-function-code --function-name idiom-tweeter --zip-file fileb://./lambda.zip && rm ./lambda.zip"
+    "deploy": "sh deploy.sh"
   },
   "author": "ronanyeah <ronan_mccabe@hotmail.com>",
   "license": "MIT",
   "dependencies": {
     "node-fetch": "^1.6.3",
-    "ramda": "^0.22.1",
-    "sanctuary": "^0.11.1",
-    "sanctuary-def": "^0.6.0"
+    "ramda": "^0.22.1"
+  },
+  "devDependencies": {
+    "dotenv": "^4.0.0"
   }
 }
